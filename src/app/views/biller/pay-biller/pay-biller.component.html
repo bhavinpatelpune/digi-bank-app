@@ -1,0 +1,27 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-sm-3"></div>
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <form [formGroup]="actForm">
+            <label for="company">Select payee*</label>
+            <select class="form-control" formControlName="cbBillers" >
+              <option *ngFor="let act of billerList" [value]="act.biller_id"> {{ act.biller_name }} | {{ act.biller_id }} </option>
+            </select>
+            <!-- <select class="form-control" id="cbPayee">
+              <option>Telephone </option>
+              <option>Mobile Prepaid</option>
+              <option>Mobile Postpaid</option>
+              <option>Electricity</option>
+              <option>D2H</option>
+              <option>LIC Insurance</option>
+              <option>Internet Broadband</option>
+              <option>GAS</option>
+            </select> -->
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

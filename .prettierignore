@@ -1,0 +1,13 @@
+package.json
+package-lock.json
+yarn.lock
+dist
+tslint.json
+tsconfig.json
+angular.json
+tsconfig.app.json
+tsconfig.spec.json
+app.module.ts
+*.module.ts
+*.service.ts
+*.guard.ts

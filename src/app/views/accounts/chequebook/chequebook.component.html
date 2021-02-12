@@ -1,0 +1,43 @@
+<form [formGroup]="actForm">
+  <div class="animated fadeIn">
+    <div class="row">
+      <div class="col-sm-3"></div>
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">
+            <strong><i class="nav-icon icon-star"></i> Request for Chequebook</strong>
+          </div>
+          <div class="card-body">
+            <div class="form-group">
+              <label for="company">Select account*</label>
+              <select class="form-control" formControlName="cbAccounts" #t [ngClass]="{ 'is-invalid': submitted && f.cbAccounts.errors }">
+                <option *ngFor="let act of acctdetails" [value]="act.Accountnumber"> {{ act.Accountnumber }} | {{ act.Accounttype }} </option>
+              </select>
+              <div *ngIf="submitted && f.cbAccounts.errors" class="invalid-feedback">
+                <div *ngIf="f.cbAccounts.errors.required">Account is required</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="chequeleave">No. of leaves</label><br />
+              <input class="form-group" id="20" type="radio" value="20" formControlName="chequeleave" />
+              <label for="20">20</label> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+              <input class="form-group" id="50" type="radio" value="50" formControlName="chequeleave" />
+              <label for="50">50</label>
+              <div *ngIf="submitted && f.chequeleave.errors" class="invalid-feedback">
+                <div *ngIf="f.chequeleave.errors.required">Leaves is required</div>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <div class="row">
+              <div *ngIf="error" class="alert alert-danger">
+                <strong> {{ error }}</strong>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-md btn-success" (click)="onSubmit()">SUBMIT</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

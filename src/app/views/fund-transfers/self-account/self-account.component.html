@@ -1,0 +1,124 @@
+<form [formGroup]="actForm">
+  <div class="row">
+    <div class="col-sm-3"></div>
+
+    <div *ngIf="showInputForm" class="col-sm-6">
+      <div class="card">
+        <div class="card-header">
+          <strong><i class="nav-icon icon-action-undo"></i> To Self account</strong>
+          <small>Fill (*) marked as mandatory fields</small>
+        </div>
+        <div class="card-body">
+          <div class="form-group">
+            <label for="company">From account*</label>
+            <select class="form-control" formControlName="cbFromAccount" #tf [ngClass]="{ 'is-invalid': submitted && f.cbFromAccount.errors }" (change)="onFromActSelect(tf.value)">
+              <option *ngFor="let act of acctdetails" [value]="act.Accountnumber"> {{ act.Accountnumber }} | {{ act.Accounttype }} </option>
+            </select>
+            <div *ngIf="submitted && f.cbFromAccount.errors" class="invalid-feedback">
+              <div *ngIf="f.cbFromAccount.errors.required">From account is required</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="vat">To account*</label>
+            <select class="form-control" formControlName="cbToAccount" #tt [ngClass]="{ 'is-invalid': submitted && f.cbToAccount.errors }" (change)="onToActSelect(tt.value)">
+              <option *ngFor="let act of acctdetails" [value]="act.Accountnumber"> {{ act.Accountnumber }} | {{ act.Accounttype }} </option>
+            </select>
+            <div *ngIf="submitted && f.cbToAccount.errors" class="invalid-feedback">
+              <div *ngIf="f.cbToAccount.errors.required">To account is required</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="name">Transfer date</label>
+            <input class="form-control" formControlName="txtTransdate" type="date" name="date-input" placeholder="date" [ngClass]="{ 'is-invalid': submitted && f.txtTransdate.errors }" />
+            <div *ngIf="submitted && f.txtTransdate.errors" class="invalid-feedback">
+              <div *ngIf="f.txtTransdate.errors.required">Transfer date is required</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="vat">Currency*</label>
+            <select class="form-control" formControlName="cbCurrency" #tc [ngClass]="{ 'is-invalid': submitted && f.cbCurrency.errors }" (change)="onCCYSelect(tc.value)">
+              <option>INR</option>
+              <option>USD</option>
+            </select>
+            <div *ngIf="submitted && f.cbCurrency.errors" class="invalid-feedback">
+              <div *ngIf="f.cbCurrency.errors.required">Currency is required</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="street">Amount*</label>
+            <input type="number" class="form-control" formControlName="txtAmount" (change)="onAmountChange($event.target.value)" [ngClass]="{ 'is-invalid': submitted && f.txtAmount.errors }" placeholder="Enter transfer amount" />
+            <div *ngIf="submitted && f.txtAmount.errors" class="invalid-feedback">
+              <div *ngIf="f.txtAmount.errors.required">Amount is required</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="country">Transaction Remarks/Narration</label>
+            <input type="text" class="form-control" formControlName="txtRemarks" placeholder="Enter transaction remarks" />
+          </div>
+
+          <!-- <div class="form-group">
+            <label for="country">Transaction password</label>
+            <input type="text" class="form-control" formControlName="txtPassword" [ngClass]="{ 'is-invalid': submitted && f.txtPassword.errors }" placeholder="Enter transaction password" />
+            <div *ngIf="submitted && f.txtPassword.errors" class="invalid-feedback">
+              <div *ngIf="f.txtPassword.errors.required">Transaction password is required</div>
+            </div>
+          </div> -->
+        </div>
+
+        <div class="card-footer">
+          <div *ngIf="error" class="alert alert-danger">
+            <strong> {{ error }}</strong>
+          </div>
+          <button type="button" class="btn btn-lg btn-warning float-right" (click)="btnContinue()"><i class="fa fa-arrow-circle-o-right"></i> CONTINUE</button>
+          <!-- <button type="submit" class="btn btn-md btn-success"><i class="fa fa-save"></i> SUBMIT</button> &nbsp;
+          <button type="reset" class="btn btn-md btn-danger"><i class="fa fa-ban"></i> CANCEL</button> -->
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="showReviewForm" class="col-sm-6">
+      <div class="card">
+        <div class="card-header">
+          <strong><i class="fa fa-eye"></i> Review screen</strong>
+          <small>(Review your filled details before confirmation)</small>
+        </div>
+        <div class="card-body">
+          <div class="form-group">
+            <label for="company">From account:</label>
+            <strong> {{ f.cbFromAccount.value }}</strong>
+          </div>
+          <div class="form-group">
+            <label for="vat">To account:</label>
+            <strong>{{ f.cbToAccount.value }}</strong>
+          </div>
+          <div class="form-group">
+            <label for="name">Transfer date:</label>
+            <strong>{{ f.txtTransdate.value }}</strong>
+          </div>
+
+          <div class="form-group">
+            <label for="vat">Currency:</label>
+            <strong> {{ f.cbCurrency.value }}</strong>
+          </div>
+          <div class="form-group">
+            <label for="street">Amount:</label>
+            <strong>{{ f.txtAmount.value }}</strong>
+          </div>
+
+          <div class="form-group">
+            <label for="country">Transaction Remarks/Narration:</label>
+            <strong>{{ f.txtRemarks.value }}</strong>
+          </div>
+
+          <div class="card-footer">
+            <button class="btn btn-md btn-warning" (click)="back()"><i class="fa fa-arrow-circle-o-left"></i> EDIT</button>
+            <button type="button" class="btn btn-lg btn-success" (click)="btnOnSubmit()"><i class="fa fa-save"></i> SUBMIT</button> &nbsp;
+            <button type="reset" class="btn btn-lg btn-danger" (click)="btnCancel()"><i class="fa fa-ban"></i> CANCEL</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

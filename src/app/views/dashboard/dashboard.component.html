@@ -1,0 +1,113 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <strong><i class="fa fa-user"></i> {{ greetingMsg }} Welcome back, {{ customerName }}</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-6 col-lg-3">
+      <div class="card">
+        <div class="card-body p-0 clearfix">
+          <i class="fa fa-inr bg-primary p-4 font-2xl mr-3 float-left"></i>
+          <div class="h5 text-primary mb-0 pt-3">INR 1,00,000.00</div>
+          <div class="text-muted text-uppercase font-weight-bold font-xs">Balance (Saving)</div>
+        </div>
+      </div>
+    </div>
+    <!--/.col-->
+    <div class="col-6 col-lg-3">
+      <div class="card">
+        <div class="card-body p-0 clearfix">
+          <i class="fa fa-inr bg-warning p-4 font-2xl mr-3 float-left"></i>
+          <div class="h5 text-warning mb-0 pt-3">INR 98,644.00</div>
+          <div class="text-muted text-uppercase font-weight-bold font-xs">Balance (Current)</div>
+        </div>
+      </div>
+    </div>
+    <!--/.col-->
+    <div class="col-6 col-lg-3">
+      <div class="card">
+        <div class="card-body p-0 clearfix">
+          <i class="fa fa-inr bg-success p-4 font-2xl mr-3 float-left"></i>
+          <div class="h5 text-success mb-0 pt-3">INR 1,34,334.00</div>
+          <div class="text-muted text-uppercase font-weight-bold font-xs">Balance (Fixed deposit)</div>
+        </div>
+      </div>
+    </div>
+    <!--/.col-->
+    <div class="col-6 col-lg-3">
+      <div class="card">
+        <div class="card-body p-0 clearfix">
+          <i class="fa fa-inr bg-danger p-4 font-2xl mr-3 float-left"></i>
+          <div class="h5 text-danger mb-0 pt-3">INR 1,999.50</div>
+          <div class="text-muted text-uppercase font-weight-bold font-xs">Expense</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <strong><i class="fa fa-list"></i> Account Summary</strong>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered table-striped table-hover table-sm">
+              <thead>
+                <tr>
+                  <th width="8%">Action</th>
+                  <th>Account number</th>
+                  <th>Account Type</th>
+                  <th>Currency</th>
+                  <th>Current balance</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of accountsummaryList">
+                  <td>
+                    <button type="button" class="btn btn-sm btn-primary" (click)="ViewStatement(item)" tooltip="Click here to see account statement"><i class="fa fa-eye"></i> View</button>
+                  </td>
+                  <td>{{ item.Accountnumber }}</td>
+                  <td>
+                    <strong
+                      [ngClass]="{
+                        'text-primary': item.Accounttype === 'Saving',
+                        'text-warning': item.Accounttype === 'Current',
+                        'text-success': item.Accounttype === 'Fixed Deposit'
+                      }"
+                      >{{ item.Accounttype }}</strong
+                    >
+                  </td>
+                  <td>{{ item.Currency }}</td>
+                  <td>{{ item.avail_balance }}</td>
+                </tr>
+
+                <!--   { 'badge badge-success': item.Accounttype === 'Saving', 'badge badge-primary': item.Accounttype === 'Current','badge badge-warning': item.Accounttype === 'Fixed Deposit',
+              "id": 1,
+              "Customername": "Bhavin Patel",
+              "Accountnumber": "11111222222",
+              "SingleJoint": "Yes",
+              "Accounttype": "Saving",
+              "Accountstatus": "Active",
+              "Currency": "INR",
+              "Chqeuebook": "Yes",
+              "Overdraft": "No",
+              "Standingorder": "No",
+              "avail_balance": "100000" -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--/.col-->
+  </div>
+  <!--/.row-->
+</div>

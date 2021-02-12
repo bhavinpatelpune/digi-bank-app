@@ -1,0 +1,30 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-header"><strong>User Profile</strong></div>
+        <div class="card-body">
+          <form action="" method="post" class="form-horizontal">
+            <div class="form-group row">
+              <label class="col-md-3 col-form-label" for="hf-userName">Customer Name</label>
+              <div class="col-md-9">
+                {{userName}}
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-3 col-form-label" for="hf-password">Password</label>
+              <div class="col-md-9">
+                <input type="password" id="hf-password" name="hf-password" class="form-control" placeholder="Enter Password.." autocomplete="current-password" />
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="card-footer">
+          <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> Submit</button>
+          <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Reset</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

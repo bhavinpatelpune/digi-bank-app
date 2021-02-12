@@ -1,0 +1,21 @@
+// If you want to override variables do it here
+// @import 'variables';
+
+// Import styles
+@import '~@coreui/coreui/scss/coreui';
+
+// If you want to add something do it here
+// @import 'custom';
+
+@import '~ngx-toastr/toastr';
+
+.btn {
+  letter-spacing: 1px;
+  line-height: 15px;
+  border-radius: 40px;
+  transition: all 0.3s ease 0s;
+}
+
+.form-control.is-invalid {
+  background-image: none;
+}
